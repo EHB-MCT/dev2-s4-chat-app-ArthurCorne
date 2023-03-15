@@ -3,11 +3,14 @@
 const chat = {
     author: "yourName",
     init() {
+        this.fetchMessages();
+        this.renderMessage();
     },
     sendMessage() {
-        this.fetchMessages();
+
     },
     fetchMessages() {
+        console.log('fetching...');
         fetch('https://dev2chat.onrender.com/messages')
             .then(function (response) {
                 return response.json();
@@ -16,7 +19,6 @@ const chat = {
                 console.log(messages);
                 const message = messages[0];
                 console.log(message);
-
             });
     },
 
@@ -31,7 +33,7 @@ const chat = {
                   ${message.message}
                   </p>
               </div>`;
-              document.querySelector("#messageContainer").insertAdjecentHTML('beforeend',htmlstring);
+        document.querySelector("#messageContainer").insertAdjecentHTML('beforeend', htmlstring);
     }
 
 };
